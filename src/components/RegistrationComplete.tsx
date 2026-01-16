@@ -1,7 +1,12 @@
 const imgLogo = "https://www.figma.com/api/mcp/asset/e933a8bd-2f14-4aba-bb4c-b0e939e67c2a";
 const imgBackground = "/74dbf5b50fe888a77d8d297d1ecfdcbc0bb8769f.jpg";
 
-export default function RegistrationComplete() {
+interface RegistrationCompleteProps {
+  userEmail: string;
+  userName: string;
+}
+
+export default function RegistrationComplete({ userEmail: _userEmail, userName }: RegistrationCompleteProps) {
   return (
     <div className="relative w-full min-h-screen lg:h-screen bg-white flex flex-col lg:flex-row overflow-x-hidden">
       <div className="flex-1 flex flex-col items-center justify-center lg:justify-start py-6 sm:py-8 lg:py-6 px-4 sm:px-6 lg:px-8 xl:px-10 lg:overflow-y-auto">
@@ -19,7 +24,7 @@ export default function RegistrationComplete() {
               ✅ Registration Successful!
             </h1>
             <h2 className="font-montserrat font-semibold text-[16px] sm:text-[18px] md:text-[20px] lg:text-[18px] leading-tight text-[#002B59] w-full text-left">
-              Welcome to Delveng – Home of Experience
+              Welcome {userName} to Delveng – Home of Experience
             </h2>
           </div>
 
