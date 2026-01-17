@@ -33,9 +33,7 @@ export default function Signup({ onComplete }: SignupProps) {
     if (!formData.firstName.trim()) {
       errors.firstName = 'First name is required';
     }
-    if (!formData.lastName.trim()) {
-      errors.lastName = 'Last name is required';
-    }
+    // Last name is optional
     if (!formData.email.trim()) {
       errors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -278,7 +276,7 @@ export default function Signup({ onComplete }: SignupProps) {
 
                   <div className="flex-1 flex flex-col">
                     <label className="font-medium text-xs sm:text-sm text-text-dark pb-2">
-                      Last Name
+                      Last Name <span className="text-gray-400">(optional)</span>
                     </label>
                     <div className={`bg-white border-[1.5px] border-[#b0d6ff] flex gap-2 sm:gap-3 h-[44px] sm:h-[48px] md:h-[50px] items-center px-3 sm:px-4 rounded-xl ${formErrors.lastName ? 'border-red-500' : ''}`}>
                       <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#a2acb9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
