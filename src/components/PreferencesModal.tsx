@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FormSelect from './FormSelect';
 
-const imgHeader = "/74dbf5b50fe888a77d8d297d1ecfdcbc0bb8769f.jpg";
+const imgHeader = "/74dbf5b50fe888a77d8d297d1ecfdcbc0bb8769f.webp";
 
 interface PreferencesModalProps {
   isOpen: boolean;
