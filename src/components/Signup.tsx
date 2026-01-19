@@ -6,7 +6,7 @@ import { submitEarlyRegistration, EarlyRegistrationRequest, handleGoogleAuth } f
 const imgLogo = "https://www.figma.com/api/mcp/asset/e933a8bd-2f14-4aba-bb4c-b0e939e67c2a";
 const imgGoogle = "https://www.figma.com/api/mcp/asset/7520e2b5-9dac-467e-a840-367748ce7fdb";
 const imgDivider = "https://www.figma.com/api/mcp/asset/c5580568-1abc-4c59-9c7b-7662a1448fa3";
-const imgBackground = "https://www.figma.com/api/mcp/asset/d2e6b2d4-19dc-4e02-96bd-5d0e90fad0d5";
+const imgBackground = "/Rectangle 4.webp";
 
 interface SignupProps {
   onComplete?: (email: string, userName: string) => void;
@@ -33,9 +33,7 @@ export default function Signup({ onComplete }: SignupProps) {
     if (!formData.firstName.trim()) {
       errors.firstName = 'First name is required';
     }
-    if (!formData.lastName.trim()) {
-      errors.lastName = 'Last name is required';
-    }
+    // Last name is optional
     if (!formData.email.trim()) {
       errors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -208,9 +206,6 @@ export default function Signup({ onComplete }: SignupProps) {
               <h1 className="font-bold text-lg sm:text-xl md:text-2xl text-brand-primary">
                 Create Your Account
               </h1>
-              <p className="font-medium text-xs sm:text-sm md:text-base text-text-dark">
-                Everything you need to learn, all in one place
-              </p>
             </div>
 
             <div className="flex flex-col gap-2 w-full">
@@ -278,7 +273,7 @@ export default function Signup({ onComplete }: SignupProps) {
 
                   <div className="flex-1 flex flex-col">
                     <label className="font-medium text-xs sm:text-sm text-text-dark pb-2">
-                      Last Name
+                      Last Name <span className="text-gray-400">(optional)</span>
                     </label>
                     <div className={`bg-white border-[1.5px] border-[#b0d6ff] flex gap-2 sm:gap-3 h-[44px] sm:h-[48px] md:h-[50px] items-center px-3 sm:px-4 rounded-xl ${formErrors.lastName ? 'border-red-500' : ''}`}>
                       <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#a2acb9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
