@@ -206,9 +206,6 @@ export default function Signup({ onComplete }: SignupProps) {
               <h1 className="font-bold text-lg sm:text-xl md:text-2xl text-brand-primary">
                 Create Your Account
               </h1>
-              <p className="font-medium text-xs sm:text-sm md:text-base text-text-dark">
-                Everything you need to learn, all in one place
-              </p>
             </div>
 
             <div className="flex flex-col gap-2 w-full">
