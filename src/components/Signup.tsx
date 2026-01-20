@@ -5,7 +5,7 @@ import { submitEarlyRegistration, EarlyRegistrationRequest, handleGoogleAuth } f
 
 const imgLogo = "https://www.figma.com/api/mcp/asset/e933a8bd-2f14-4aba-bb4c-b0e939e67c2a";
 const imgGoogle = "https://www.figma.com/api/mcp/asset/7520e2b5-9dac-467e-a840-367748ce7fdb";
-const imgDivider = "https://www.figma.com/api/mcp/asset/c5580568-1abc-4c59-9c7b-7662a1448fa3";
+const imgDivider = "/Group 1.png";
 const imgBackground = "/Rectangle 4.webp";
 
 interface SignupProps {
@@ -206,6 +206,9 @@ export default function Signup({ onComplete }: SignupProps) {
               <h1 className="font-bold text-lg sm:text-xl md:text-2xl text-brand-primary">
                 Create Your Account
               </h1>
+              <p className="font-medium text-xs sm:text-sm md:text-base text-text-dark">
+                Everything you need to learn, all in one place
+              </p>
             </div>
 
             <div className="flex flex-col gap-2 w-full">

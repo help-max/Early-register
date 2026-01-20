@@ -1,7 +1,7 @@
 const imgLogo = "https://www.figma.com/api/mcp/asset/658122b3-00f5-4ad8-9a14-f05b52fbe6a5";
 const imgEngineer = "https://www.figma.com/api/mcp/asset/f533aa2e-0820-4474-993a-11568c8b74d7";
-const imgGroup = "https://www.figma.com/api/mcp/asset/37300276-f879-4d03-b8b1-d6a1286d9f91";
-const imgEllipse = "https://www.figma.com/api/mcp/asset/4fcdd5df-e55d-4ea9-b668-4b2c4b288460";
+const imgGroup = "/Vector.png";
+const imgEllipse = "/Ellipse 1.png";
 
 interface WelcomeProps {
   onGetStarted?: () => void;
