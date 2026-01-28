@@ -1,5 +1,5 @@
-const imgLogo = "https://www.figma.com/api/mcp/asset/658122b3-00f5-4ad8-9a14-f05b52fbe6a5";
-const imgEngineer = "https://www.figma.com/api/mcp/asset/f533aa2e-0820-4474-993a-11568c8b74d7";
+const imgLogo = "/Logo (2) 3 1 (1).png";
+const imgEngineer = "/handsome-male-construction-engineer-working-office-with-laptop 1.png";
 const imgGroup = "/Vector.png";
 const imgEllipse = "/Ellipse 1.png";
 

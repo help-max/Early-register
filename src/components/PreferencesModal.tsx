@@ -25,6 +25,36 @@ export default function PreferencesModal({ isOpen, onClose, onSubmit, isSubmitti
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof PreferencesData, string>>>({});
+  const [selectedCategory, setSelectedCategory] = useState<'design' | 'site-supervision' | ''>('');
+
+  const designOptions = [
+    'HVAC',
+    'Plumbing',
+    'Fire Fighting',
+    'Electrical',
+    'Light Current',
+    'BMS',
+    'Architecture',
+    'Landscape',
+    'Interior design',
+    'Structure',
+    'Infrastructure civil',
+    'Infrastructure dry utilities',
+    'Infrastructure wet utilities'
+  ];
+
+  const siteSupervisionOptions = [
+    'HVAC',
+    'Plumbing',
+    'Fire Fighting',
+    'Electrical',
+    'Light Current',
+    'BMS',
+    'Infrastructure civil',
+    'Infrastructure wet utilities',
+    'Infrastructure dry utilities',
+    'Civil'
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,7 +76,13 @@ export default function PreferencesModal({ isOpen, onClose, onSubmit, isSubmitti
       return;
     }
 
-    onSubmit(formData);
+    // Format the interests as "category->detail"
+    const formattedData = {
+      ...formData,
+      interests: selectedCategory && formData.interests ? `${selectedCategory}->${formData.interests}` : formData.interests
+    };
+
+    onSubmit(formattedData);
   };
 
   const handleChange = (field: keyof PreferencesData) => (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -85,19 +121,80 @@ export default function PreferencesModal({ isOpen, onClose, onSubmit, isSubmitti
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-2 sm:gap-2.5 md:gap-3">
-            <FormSelect
-              label="Area of Interest"
-              value={formData.interests}
-              onChange={handleChange('interests')}
-              error={errors.interests}
-              options={[
-                { value: '', label: 'Select your area of interest' },
-                { value: 'electrical', label: 'Electrical' },
-                { value: 'mechanical', label: 'Mechanical' },
-                { value: 'architectural', label: 'Architectural' },
-                { value: 'construction', label: 'Construction' }
-              ]}
-            />
+            <div className="flex flex-col gap-3">
+              <label className="text-sm font-medium text-gray-700">
+                Area of Interest
+              </label>
+              
+              {!selectedCategory ? (
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedCategory('design');
+                      setFormData({ ...formData, interests: '' });
+                    }}
+                    className="p-4 border-2 border-gray-200 rounded-xl hover:border-brand-primary hover:bg-blue-50 transition-all text-center"
+                  >
+                    <img src="/ai-sheets-stroke-rounded 1.svg" alt="Design" className="w-8 h-8 mx-auto mb-2" />
+                    <span className="font-semibold text-sm">Design</span>
+                    <p className="text-xs text-gray-500 mt-1">Engineering design disciplines</p>
+                  </button>
+                  
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedCategory('site-supervision');
+                      setFormData({ ...formData, interests: '' });
+                    }}
+                    className="p-4 border-2 border-gray-200 rounded-xl hover:border-brand-primary hover:bg-blue-50 transition-all text-center"
+                  >
+                    <img src="/Group 32.svg" alt="Site Supervision" className="w-8 h-8 mx-auto mb-2" />
+                    <span className="font-semibold text-sm">Site Supervision</span>
+                    <p className="text-xs text-gray-500 mt-1">On-site engineering management</p>
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedCategory('');
+                      setFormData({ ...formData, interests: '' });
+                    }}
+                    className="text-sm text-brand-primary hover:underline mb-2"
+                  >
+                    ← Back to categories
+                  </button>
+                  
+                  <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto p-2 border border-gray-200 rounded-lg">
+                    {(selectedCategory === 'design' ? designOptions : siteSupervisionOptions).map((option) => (
+                      <label
+                        key={option}
+                        className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer"
+                      >
+                        <input
+                          type="radio"
+                          name="interests"
+                          value={option}
+                          checked={formData.interests === option}
+                          onChange={(e) => {
+                            setFormData({ ...formData, interests: e.target.value });
+                            setErrors({ ...errors, interests: undefined });
+                          }}
+                          className="w-4 h-4 text-brand-primary"
+                        />
+                        <span className="text-sm">{option}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {errors.interests && (
+                <p className="text-red-500 text-xs mt-1">{errors.interests}</p>
+              )}
+            </div>
 
             <FormSelect
               label="Preferred Learning Mode"

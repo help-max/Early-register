@@ -3,8 +3,8 @@ import { useGoogleLogin } from '@react-oauth/google';
 import PreferencesModal, { PreferencesData } from './PreferencesModal';
 import { submitEarlyRegistration, EarlyRegistrationRequest, handleGoogleAuth } from '../services/api';
 
-const imgLogo = "https://www.figma.com/api/mcp/asset/e933a8bd-2f14-4aba-bb4c-b0e939e67c2a";
-const imgGoogle = "https://www.figma.com/api/mcp/asset/7520e2b5-9dac-467e-a840-367748ce7fdb";
+const imgLogo = "/Logo (2) 3 1 (1).png";
+const imgGoogle = "/image 2.png";
 const imgDivider = "/Group 1.png";
 const imgBackground = "/Rectangle 4.webp";
 
